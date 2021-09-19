@@ -4,6 +4,8 @@
 namespace Chareice\LaravelChat\Contracts;
 
 
+use Carbon\Carbon;
+
 interface ChatSessionContract
 {
     /**
@@ -13,10 +15,16 @@ interface ChatSessionContract
     public function target(): ChatAbleContract;
 
     /**
-     * 会话中的最后一条消息
-     * @return MessageContact
+     * 最后一条消息发送时间
+     * @return Carbon
      */
-    public function lastMessage(): MessageContact;
+    public function lastMessageAt(): Carbon;
+
+    /**
+     * 最后一条消息的预览消息
+     * @return string
+     */
+    public function lastMessagePreview() : string;
 
     /**
      * 会话中未读消息数量

@@ -55,5 +55,9 @@ class ChatMessage extends Model implements MessageContact
         return $this->read_at;
     }
 
+    public function preview() : string
+    {
+        return $this->content();
+    }
 
 }

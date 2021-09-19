@@ -4,7 +4,6 @@
 namespace Tests;
 
 
-use Chareice\LaravelChat\ChatMessage;
 use Chareice\LaravelChat\ChatSession;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 

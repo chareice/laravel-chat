@@ -1,6 +1,7 @@
 <?php
 namespace Chareice\LaravelChat;
 
+use Carbon\Carbon;
 use Chareice\LaravelChat\Contracts\ChatAbleContract;
 use Chareice\LaravelChat\Contracts\ChatSessionContract;
 use Chareice\LaravelChat\Contracts\MessageContact;
@@ -40,6 +41,16 @@ class ChatSession extends Model implements ChatSessionContract
 
     public function unreadMessageCount(): int
     {
-        return $this->messages()->whereMorphedTo('receiverable', $this->ownerable)->whereNull('read_at')->count();
+        return $this->unread_count ?? 0;
+    }
+
+    public function lastMessageAt(): Carbon
+    {
+        return $this->last_message_at;
+    }
+
+    public function lastMessagePreview(): string
+    {
+        return $this->message_preview;
     }
 }

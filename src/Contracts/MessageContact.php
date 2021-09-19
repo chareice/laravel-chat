@@ -49,4 +49,10 @@ interface MessageContact
      * @return mixed
      */
     public function readAt();
+
+    /**
+     * 消息的预览内容
+     * @return string
+     */
+    public function preview() : string;
 }

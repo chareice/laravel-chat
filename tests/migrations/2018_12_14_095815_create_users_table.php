@@ -32,6 +32,9 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->morphs('ownerable');
             $table->morphs('targetable');
+            $table->unsignedInteger('unread_count')->default(0);
+            $table->string('message_preview');
+            $table->dateTime('last_message_at');
             $table->timestamps();
         });
 
