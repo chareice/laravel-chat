@@ -4,12 +4,33 @@
 namespace Tests;
 
 
+use Chareice\LaravelChat\ChatMessage;
 use Chareice\LaravelChat\ChatSession;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class MessageTest extends TestCase
 {
     use RefreshDatabase;
+
+    public function test_difference_user_type()
+    {
+        /** @var User $a */
+        $a = User::query()->create([
+            'name' => 'user1',
+            'avatar' => 'user1-avatar'
+        ]);
+
+        /** @var User $b */
+        $b = CompanyUser::query()->create([
+            'name' => 'user2',
+            'avatar' => 'user2-avatar'
+        ]);
+
+        $a->sendMessage('test', 'text', $b);
+        /** @var ChatMessage $message */
+        $message = ChatMessage::first();
+        $this->assertEquals(CompanyUser::class, $message->receiverable_type);
+    }
 
     public function test_create_message()
     {
