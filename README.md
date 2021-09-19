@@ -2,6 +2,11 @@
 
 为Laravel提供消息（私信）服务
 
+### 安装
+```bash
+composer require chareice/laravel-chat
+```
+
 ### 使用
 
 ```php
