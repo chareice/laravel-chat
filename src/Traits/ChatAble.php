@@ -38,7 +38,7 @@ trait ChatAble
 
                 $session->participants()->saveMany(collect([$sender, $receiver])->map(function ($item) {
                     $participant = new ChatParticipant();
-                    $participant->participant()->associate($item);
+                    $participant->chatable()->associate($item);
                     return $participant;
                 }));
 

@@ -10,7 +10,7 @@ class ChatParticipant extends Model
     public $incrementing = false;
     public $timestamps = false;
 
-    public function participant()
+    public function chatable()
     {
         return $this->morphTo('chatable');
     }
