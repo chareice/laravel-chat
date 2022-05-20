@@ -1,38 +1,45 @@
 {
-    "name": "chareice/laravel-chat",
-    "description": "Chat Package for laravel",
-    "type": "library",
-    "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Chareice\\LaravelChat\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Chareice",
-            "email": "chareice@live.com"
-        }
-    ],
-    "require": {
-        "php": ">=8.0",
-        "laravel/framework": "^9.0",
-        "spatie/laravel-ray": "^1.29"
-    },
-    "require-dev": {
-        "orchestra/testbench": "^7.0",
-        "phpunit/phpunit": "^9.5",
-        "pestphp/pest": "^1.21",
-        "pestphp/pest-plugin-laravel": "^1.2"
-    },
-    "config": {
-        "allow-plugins": {
-            "pestphp/pest-plugin": true
-        }
+  "name": "chareice/laravel-chat",
+  "description": "Chat Package for laravel",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Chareice\\LaravelChat\\": "src/"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Chareice",
+      "email": "chareice@live.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.0",
+    "laravel/framework": "^9.0",
+    "spatie/laravel-ray": "^1.29"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^7.0",
+    "phpunit/phpunit": "^9.5",
+    "pestphp/pest": "^1.21",
+    "pestphp/pest-plugin-laravel": "^1.2"
+  },
+  "config": {
+    "allow-plugins": {
+      "pestphp/pest-plugin": true
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Chareice\\LaravelChat\\ChatServiceProvider"
+      ]
+    }
+  }
 }
