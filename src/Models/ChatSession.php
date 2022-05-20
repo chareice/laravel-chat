@@ -1,4 +1,5 @@
 <?php
+
 namespace Chareice\LaravelChat\Models;
 
 use Carbon\Carbon;
@@ -22,23 +23,13 @@ class ChatSession extends Model implements ChatSessionContract
         return $this->hasOne(ChatMessage::class)->latestOfMany();
     }
 
-    public function unreadMessageCount(): int
-    {
-        return $this->unread_count ?? 0;
-    }
-
-    public function lastMessageAt(): Carbon
-    {
-        return $this->last_message_at;
-    }
-
-    public function lastMessagePreview(): string
-    {
-        return $this->message_preview;
-    }
-
-    public function participants() : HasMany
+    public function participants(): HasMany
     {
         return $this->hasMany(ChatParticipant::class, 'session_id');
+    }
+
+    public function id(): string
+    {
+        return $this->id;
     }
 }
