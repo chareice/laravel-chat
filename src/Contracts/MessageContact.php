@@ -1,4 +1,5 @@
 <?php
+
 namespace Chareice\LaravelChat\Contracts;
 
 /**
@@ -13,12 +14,6 @@ interface MessageContact
      * @return string
      */
     public function id(): string;
-
-    /**
-     * 所属会话
-     * @return ChatSessionContract
-     */
-    public function session(): ChatSessionContract;
 
     /**
      * 消息发送方
@@ -36,13 +31,13 @@ interface MessageContact
      * 消息内容
      * @return string
      */
-    public function content() : string;
+    public function content(): string;
 
     /**
      * 消息类型
      * @return string
      */
-    public function type() : string;
+    public function type(): string;
 
     /**
      * 消息创建时间
@@ -60,5 +55,5 @@ interface MessageContact
      * 消息的预览内容
      * @return string
      */
-    public function preview() : string;
+    public function preview(): string;
 }
