@@ -1,42 +1,25 @@
 <?php
-namespace Chareice\LaravelChat;
+namespace Chareice\LaravelChat\Models;
 
 use Carbon\Carbon;
 use Chareice\LaravelChat\Contracts\ChatAbleContract;
 use Chareice\LaravelChat\Contracts\ChatSessionContract;
 use Chareice\LaravelChat\Contracts\MessageContact;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ChatSession extends Model implements ChatSessionContract
 {
     protected $guarded = false;
 
-    public function targetable()
+    public function messages(): HasMany
     {
-        return $this->morphTo();
-    }
-
-    public function ownerable()
-    {
-        return $this->morphTo();
-    }
-
-    public function messages(): BelongsToMany
-    {
-        return $this->belongsToMany(ChatMessage::class, 'chat_sessions_messages', 'session_id', 'message_id');
-    }
-
-    public function target(): ChatAbleContract
-    {
-        return $this->targetable;
+        return $this->hasMany(ChatMessage::class, 'session_id');
     }
 
     public function lastMessage(): MessageContact
     {
-        return $this->messages()->orderByDesc('id')->first();
+        return $this->hasOne(ChatMessage::class)->latestOfMany();
     }
 
     public function unreadMessageCount(): int
@@ -52,5 +35,10 @@ class ChatSession extends Model implements ChatSessionContract
     public function lastMessagePreview(): string
     {
         return $this->message_preview;
+    }
+
+    public function participants() : HasMany
+    {
+        return $this->hasMany(ChatParticipant::class, 'session_id');
     }
 }

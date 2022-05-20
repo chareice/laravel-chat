@@ -17,7 +17,7 @@ interface ChatAbleContract
      * 聊天对象ID
      * @return string
      */
-    public function id() : string;
+    public function id(): string;
 
     /**
      * 聊天对象类型
@@ -29,13 +29,13 @@ interface ChatAbleContract
      * 头像
      * @return string
      */
-    public function avatar() : string;
+    public function avatar(): string;
 
     /**
      * 名称
      * @return string
      */
-    public function name() : string;
+    public function name(): string;
 
     /**
      * 发送消息
@@ -45,8 +45,4 @@ interface ChatAbleContract
      * @return mixed
      */
     public function sendMessage(string $content, string $type, ChatAbleContract $receiver);
-
-
-    /** ChatSessions */
-    public function chatSessions(): MorphMany;
 }

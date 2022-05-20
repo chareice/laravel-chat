@@ -31,6 +31,4 @@ class User extends Model implements ChatAbleContract
     {
         return $this->name;
     }
-
-
 }

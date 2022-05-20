@@ -15,6 +15,12 @@ interface MessageContact
     public function id(): string;
 
     /**
+     * 所属会话
+     * @return ChatSessionContract
+     */
+    public function session(): ChatSessionContract;
+
+    /**
      * 消息发送方
      * @return ChatAbleContract
      */

@@ -1,10 +1,11 @@
 <?php
 
 
-namespace Chareice\LaravelChat;
+namespace Chareice\LaravelChat\Models;
 
 
 use Chareice\LaravelChat\Contracts\ChatAbleContract;
+use Chareice\LaravelChat\Contracts\ChatSessionContract;
 use Chareice\LaravelChat\Contracts\MessageContact;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,6 +24,11 @@ class ChatMessage extends Model implements MessageContact
     public function receiverable()
     {
         return $this->morphTo();
+    }
+
+    public function session(): ChatSessionContract
+    {
+        return $this->belongsTo(ChatSession::class, 'session_id');
     }
 
     public function sender(): ChatAbleContract

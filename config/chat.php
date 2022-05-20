@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'message_model' => '\Chareice\LaravelChat\ChatMessage'
+    'message_model' => '\Chareice\LaravelChat\Models\ChatMessage'
 ];
