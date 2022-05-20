@@ -44,5 +44,5 @@ interface ChatAbleContract
      * @param ChatAbleContract $receiver
      * @return mixed
      */
-    public function sendMessage(string $content, string $type, ChatAbleContract $receiver);
+    public function sendMessage(string $content, string $type, ChatAbleContract $receiver): MessageContact;
 }

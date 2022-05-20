@@ -3,6 +3,7 @@
 namespace Chareice\LaravelChat\Traits;
 
 use Chareice\LaravelChat\Contracts\ChatAbleContract;
+use Chareice\LaravelChat\Contracts\MessageContact;
 use Chareice\LaravelChat\Models\ChatMessage;
 use Chareice\LaravelChat\Models\ChatParticipant;
 use Chareice\LaravelChat\Models\ChatSession;
@@ -12,13 +13,14 @@ use Illuminate\Support\Facades\DB;
 
 trait ChatAble
 {
-    public function sendMessage(string $content, string $type, ChatAbleContract $receiver)
+    public function sendMessage(string $content, string $type, ChatAbleContract $receiver): MessageContact
     {
         /** @var ChatAbleContract $sender */
         $sender = $this;
 
-        DB::transaction(function () use ($content, $type, $receiver, $sender) {
+        DB::beginTransaction();
 
+        try {
             // find or create chat session
             $existSession = ChatSession::query()->whereHas('participants', function (Builder $query) use ($sender) {
                 $query->where('chatable_id', $sender->id())->where('chatable_type', get_class($sender));
@@ -50,7 +52,13 @@ trait ChatAble
             $message->senderable()->associate($sender);
 
             $existSession->messages()->save($message);
-        });
+            DB::commit();
+
+            return $message;
+        } catch (\Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
     }
 
 }
