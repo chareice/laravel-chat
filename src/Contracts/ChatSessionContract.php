@@ -8,5 +8,5 @@ use Carbon\Carbon;
 
 interface ChatSessionContract
 {
-    public function id(): string;
+    public function getId(): string;
 }

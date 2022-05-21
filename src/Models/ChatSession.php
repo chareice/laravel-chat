@@ -28,8 +28,9 @@ class ChatSession extends Model implements ChatSessionContract
         return $this->hasMany(ChatParticipant::class, 'session_id');
     }
 
-    public function id(): string
+
+    public function getId(): string
     {
-        return $this->id;
+        return $this->getAttribute('id');
     }
 }

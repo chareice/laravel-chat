@@ -4,12 +4,9 @@
 namespace Tests;
 
 
-class CompanyUser extends User
+use Chareice\LaravelChat\Contracts\ChatAbleContract;
+
+class CompanyUser extends User implements ChatAbleContract
 {
     protected $table = 'users';
-
-    public function type(): string
-    {
-        return 'company-user';
-    }
 }

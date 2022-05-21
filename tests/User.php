@@ -12,23 +12,20 @@ class User extends Model implements ChatAbleContract
 
     protected $guarded = false;
 
-    public function id(): string
+
+    public function getId(): string
     {
-        return $this->id;
+        return $this->getAttribute('id');
     }
 
-    public function type(): string
+
+    public function getAvatar(): string
     {
-        return 'user';
+        return $this->getAttribute('avatar');
     }
 
-    public function avatar(): string
+    public function getName(): string
     {
-        return $this->avatar;
-    }
-
-    public function name(): string
-    {
-        return $this->name;
+        return $this->getAttribute('name');
     }
 }

@@ -17,25 +17,19 @@ interface ChatAbleContract
      * 聊天对象ID
      * @return string
      */
-    public function id(): string;
-
-    /**
-     * 聊天对象类型
-     * @return string
-     */
-    public function type(): string;
+    public function getId(): string;
 
     /**
      * 头像
      * @return string
      */
-    public function avatar(): string;
+    public function getAvatar(): string;
 
     /**
      * 名称
      * @return string
      */
-    public function name(): string;
+    public function getName(): string;
 
     /**
      * 发送消息

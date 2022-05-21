@@ -23,10 +23,9 @@ trait ChatAble
         try {
             // find or create chat session
             $existSession = ChatSession::query()->whereHas('participants', function (Builder $query) use ($sender) {
-                $query->where('chatable_id', $sender->id())->where('chatable_type', get_class($sender));
-
+                $query->where('chatable_id', $sender->getId())->where('chatable_type', get_class($sender));
             })->whereHas('participants', function (Builder $query) use ($receiver) {
-                $query->where('chatable_id', $receiver->id())->where('chatable_type', get_class($receiver));
+                $query->where('chatable_id', $receiver->getId())->where('chatable_type', get_class($receiver));
             })->first();
 
 

@@ -13,47 +13,47 @@ interface MessageContact
      * 消息ID
      * @return string
      */
-    public function id(): string;
+    public function getId(): string;
 
     /**
      * 消息发送方
      * @return ChatAbleContract
      */
-    public function sender(): ChatAbleContract;
+    public function getSender(): ChatAbleContract;
 
     /**
      * 消息接收方
      * @return ChatAbleContract
      */
-    public function receiver(): ChatAbleContract;
+    public function getReceiver(): ChatAbleContract;
 
     /**
      * 消息内容
      * @return string
      */
-    public function content(): string;
+    public function getContent(): string;
 
     /**
      * 消息类型
      * @return string
      */
-    public function type(): string;
+    public function getType(): string;
 
     /**
      * 消息创建时间
      * @return mixed
      */
-    public function createdAt();
+    public function getCreatedAt();
 
     /**
      * 消息接收方阅读时间
      * @return mixed
      */
-    public function readAt();
+    public function getReadAt();
 
     /**
      * 消息的预览内容
      * @return string
      */
-    public function preview(): string;
+    public function getPreview(): string;
 }

@@ -10,7 +10,7 @@ class ChatParticipant extends Model
     public $incrementing = false;
     public $timestamps = false;
 
-    public function chatable()
+    public function chatable(): \Illuminate\Database\Eloquent\Relations\MorphTo
     {
         return $this->morphTo('chatable');
     }

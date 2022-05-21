@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ChatMessage extends Model implements MessageContact
 {
-    public function id(): string
+    public function getId(): string
     {
         return $this->id;
     }
@@ -31,37 +31,37 @@ class ChatMessage extends Model implements MessageContact
         return $this->belongsTo(ChatSession::class, 'session_id');
     }
 
-    public function sender(): ChatAbleContract
+    public function getSender(): ChatAbleContract
     {
         return $this->senderable;
     }
 
-    public function receiver(): ChatAbleContract
+    public function getReceiver(): ChatAbleContract
     {
         return $this->receiverable;
     }
 
-    public function content(): string
+    public function getContent(): string
     {
         return $this->content;
     }
 
-    public function type(): string
+    public function getType(): string
     {
         return $this->type;
     }
 
-    public function createdAt()
+    public function getCreatedAt()
     {
         return $this->created_at;
     }
 
-    public function readAt()
+    public function getReadAt()
     {
         return $this->read_at;
     }
 
-    public function preview() : string
+    public function getPreview(): string
     {
         return $this->content();
     }
