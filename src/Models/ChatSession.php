@@ -8,6 +8,7 @@ use Chareice\LaravelChat\Contracts\ChatSessionContract;
 use Chareice\LaravelChat\Contracts\MessageContact;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class ChatSession extends Model implements ChatSessionContract
 {
@@ -18,7 +19,7 @@ class ChatSession extends Model implements ChatSessionContract
         return $this->hasMany(ChatMessage::class, 'session_id');
     }
 
-    public function lastMessage(): MessageContact
+    public function lastMessage(): HasOne
     {
         return $this->hasOne(ChatMessage::class)->latestOfMany();
     }
