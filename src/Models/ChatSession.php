@@ -21,7 +21,7 @@ class ChatSession extends Model implements ChatSessionContract
 
     public function lastMessage(): HasOne
     {
-        return $this->hasOne(ChatMessage::class)->latestOfMany();
+        return $this->hasOne(ChatMessage::class, 'session_id')->latestOfMany();
     }
 
     public function participants(): HasMany
