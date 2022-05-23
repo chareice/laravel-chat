@@ -7,7 +7,6 @@ use Chareice\LaravelChat\Contracts\MessageContact;
 use Chareice\LaravelChat\Models\ChatMessage;
 use Chareice\LaravelChat\Models\ChatParticipant;
 use Chareice\LaravelChat\Models\ChatSession;
-use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 

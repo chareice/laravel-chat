@@ -8,6 +8,7 @@ use Chareice\LaravelChat\Contracts\ChatAbleContract;
 use Chareice\LaravelChat\Contracts\ChatSessionContract;
 use Chareice\LaravelChat\Contracts\MessageContact;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ChatMessage extends Model implements MessageContact
 {
@@ -26,7 +27,7 @@ class ChatMessage extends Model implements MessageContact
         return $this->morphTo();
     }
 
-    public function session(): ChatSessionContract
+    public function session(): BelongsTo
     {
         return $this->belongsTo(ChatSession::class, 'session_id');
     }
